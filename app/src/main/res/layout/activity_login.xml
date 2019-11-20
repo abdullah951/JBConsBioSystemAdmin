@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:background="#202020"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:layout_height="fill_parent"
+    tools:context=".Login">
+
+    <ImageView
+        android:id="@+id/splashscreen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/facescan"
+        android:layout_gravity="center"
+        />
+
+    <TextView android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="30dp"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:text="JBConsBioSystem"
+        android:layout_marginBottom="50dp"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+        <EditText
+            android:id="@+id/enter_id"
+            android:layout_width="200dp"
+            android:layout_height="35dp"
+            android:hint="ENTER ID"
+            android:gravity="center"
+            android:textColorHint="@color/white"
+            android:textColor="@android:color/white"
+            android:background="@drawable/bg_edittext"
+            android:theme="@style/MyEditTextTheme"
+            android:textCursorDrawable="@drawable/color_cursor"
+            android:layout_marginBottom="10dp"/>
+
+        <EditText
+            android:id="@+id/pin"
+            android:layout_width="200dp"
+            android:layout_height="35dp"
+            android:hint="PIN"
+            android:textColor="@android:color/white"
+            android:gravity="center"
+            android:background="@drawable/bg_edittext"
+            android:theme="@style/MyEditTextTheme"
+            android:textColorHint="@android:color/white"
+            android:layout_below="@+id/enter_id"
+            android:textCursorDrawable="@drawable/color_cursor"/>
+
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/pin"
+            android:text="On Site"
+            android:visibility="gone"
+            android:id="@+id/type"
+            android:textColor="@android:color/white"
+            android:layout_alignLeft="@+id/enter_id"
+            android:buttonTint="@color/white"/>
+    </RelativeLayout>
+
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:onClick="Submit"
+        android:textColor="@android:color/black"
+        android:background="@drawable/rounded_button"
+        android:layout_marginTop="30dp"/>
+
+</LinearLayout>

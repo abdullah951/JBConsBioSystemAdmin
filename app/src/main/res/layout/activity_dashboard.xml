@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#202020"
+    tools:context=".Dashboard">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_alignParentEnd="true"
+        android:layout_margin="40dp"
+        android:background="@drawable/rounded_button"
+        android:text="LogOut"
+        android:onClick="Logout"
+        android:id="@+id/logout"
+        android:textColor="@android:color/black"
+        tools:layout_editor_absoluteX="320dp"
+        tools:layout_editor_absoluteY="2dp"
+        android:layout_alignParentRight="true" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Manager name"
+
+        android:id="@+id/name"
+        android:textColor="#F6ED22"
+        android:textStyle="bold"
+        android:textSize="28sp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/logout"
+        android:layout_marginBottom="20dp"
+        />
+
+    <RelativeLayout
+        android:layout_width="150dp"
+
+        android:elevation="3dp"
+        android:layout_below="@+id/name"
+        android:background="@drawable/rounded_card"
+        android:onClick="OpenTimeSheet"
+        android:padding="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+
+
+        android:layout_height="wrap_content" >
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:src="@drawable/timesheet"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:id="@+id/img2"
+
+            >
+
+        </ImageView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Time Sheet"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/img2"
+            android:layout_marginTop="10dp"
+            />
+
+    </RelativeLayout>
+
+</RelativeLayout>
