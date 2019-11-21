@@ -6,4 +6,5 @@
 
     <color name="white">#ffffff</color>
     <color name="yellow">#F6ED22</color>
+    <color name="LoginTextview">#000</color>
 </resources>

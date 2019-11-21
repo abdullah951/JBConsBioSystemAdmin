@@ -3,6 +3,7 @@ package com.example.jbconsbiosystem;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -17,12 +18,16 @@ public class AttendenceDetail1 extends AppCompatActivity {
     private AttendanceDetailRecycler adaptor;
     private List<EmployeeModel> modelClassList;
 
-    private String id;
+    private String id, date;
     private TextView name, totalhours;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_attendence_detail1);
+        Intent i=getIntent();
+        id=i.getStringExtra("id");
+        date=i.getStringExtra("date");
+
     }
 }

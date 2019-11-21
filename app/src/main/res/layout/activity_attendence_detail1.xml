@@ -33,12 +33,22 @@
 
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/image"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/image"
-        android:layout_below="@+id/header"/>
+        android:id="@+id/linear_image"
+        android:gravity="center_horizontal"
+        android:layout_marginBottom="40dp"
+        android:layout_marginTop="90dp">
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/image"
+            android:layout_below="@+id/header"/>
+    </LinearLayout>
+
 
     <LinearLayout
         android:id="@+id/linear"
@@ -47,7 +57,7 @@
         android:padding="10dp"
         android:gravity="center"
         android:background="#707070"
-        android:layout_below="@+id/image">
+        android:layout_below="@+id/linear_image">
 
         <TextView
             android:id="@+id/date"

@@ -2,6 +2,7 @@ package com.example.jbconsbiosystem.RecyclerClasses;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.jbconsbiosystem.AttendenceDetail1;
 import com.example.jbconsbiosystem.R;
 
 import java.util.List;
@@ -43,9 +45,10 @@ public class AttendanceDetailRecycler extends RecyclerView.Adapter<AttendanceDet
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent=new Intent(context, com.luxand.facerecognition.AttendanceDetailRecycler.class);
-//                intent.putExtra("id", modelClass.getEmp_code());
-//                context.startActivity(intent);
+                Intent intent=new Intent(context, AttendenceDetail1.class);
+                intent.putExtra("id", modelClass.getEmp_code());
+                intent.putExtra("date", modelClass.getDate());
+                context.startActivity(intent);
 
             }
         });
