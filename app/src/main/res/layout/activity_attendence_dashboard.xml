@@ -33,22 +33,29 @@
 
     </LinearLayout>
 
-    <EditText
+    <androidx.appcompat.widget.SearchView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:layout_marginTop="10dp"
+        android:clickable="true"
+        android:imeOptions="actionSearch"
+        android:focusable="true"
+
+
         android:padding="5dp"
         android:layout_below="@+id/header"
         android:hint="  Search By Id"
         android:textColorHint="@color/white"
-        android:drawableLeft="@drawable/ic_search_white_24dp"
+        app:searchIcon="@drawable/ic_search_white_24dp"
         android:id="@+id/searchclass"
         android:background="@drawable/searchclassbox"
         android:layout_marginBottom="5dp"
         android:cursorVisible="true"
         android:textColor="@color/white"
-        />
+        >
+        <requestFocus />
+    </androidx.appcompat.widget.SearchView>
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="wrap_content"
