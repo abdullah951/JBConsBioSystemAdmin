@@ -1,6 +1,7 @@
 package com.example.jbconsbiosystem;
 
 import android.app.Activity;
+import android.app.SearchManager;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
@@ -41,44 +42,38 @@ public class AttendenceDashboard extends AppCompatActivity  {
         setContentView(R.layout.activity_attendence_dashboard);
 
 
-         searchView=findViewById(R.id.searchclass);
         modelClassList = new ArrayList<>();
         recyclerView = findViewById(R.id.recycler_total_users);
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager recyclerLayoutManager = new LinearLayoutManager(this);
         recyclerLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(recyclerLayoutManager);
-        searchView.setOnQueryTextFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view, boolean hasFocus) {
-                if (hasFocus) {
-                    InputMethodManager imm = (InputMethodManager)
-                            getSystemService(Context.INPUT_METHOD_SERVICE);
-                    if (imm != null) {
-                        imm.showSoftInput(view, 0);
-                    }
-                }
-            }
-        });
 
 
+
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        searchView = (SearchView) findViewById(R.id.searchclass);
+
+        searchView.setSearchableInfo(searchManager
+                .getSearchableInfo(getComponentName()));
+        searchView.setMaxWidth(Integer.MAX_VALUE);
+
+        // listening to search query text change
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                //Log.e("onQueryTextChange", "called");
-                return false;
-            }
-
             @Override
             public boolean onQueryTextSubmit(String query) {
-                AddDataToRecyclerView(query);
-
-                // Do your task here
-
+                // filter recycler view when query submitted
+                adaptor.getFilter().filter(query);
                 return false;
             }
 
+            @Override
+            public boolean onQueryTextChange(String query) {
+                // filter recycler view when text is changed
+                adaptor.getFilter().filter(query);
+                Log.e("yunnjy", "onQueryTextChange: "+query );
+                return false;
+            }
         });
 
          AddDataToRecyclerView("");

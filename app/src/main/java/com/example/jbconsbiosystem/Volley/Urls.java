@@ -2,7 +2,7 @@ package com.example.jbconsbiosystem.Volley;
 
 public class Urls {
 
-//    public static final String url="http://192.168.43.146:8081/api/";
+//      public static final String url="192.168.43.67:8082/api/";
     public static final String url="http://ec2-18-223-107-103.us-east-2.compute.amazonaws.com:8081/api/";
 
     public static final String login=url+"Attendance/Login";
