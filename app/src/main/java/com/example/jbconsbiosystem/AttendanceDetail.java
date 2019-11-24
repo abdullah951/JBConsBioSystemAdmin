@@ -150,4 +150,8 @@ public class AttendanceDetail extends Activity {
         datePickerDialog.getDatePicker().setMaxDate(cal.getTimeInMillis());
         datePickerDialog.show();
     }
+
+    public void backPage(View view) {
+        finish();
+    }
 }

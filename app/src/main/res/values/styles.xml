@@ -5,7 +5,9 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorAccent">@color/white</item>
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:textColorSecondary">@color/white</item>
     </style>
 
     <style name="MyEditTextTheme">
@@ -13,5 +15,14 @@
         <item name="colorControlActivated">#FFFFFF</item>
         <item name="colorControlHighlight">#FFFFFF</item>
     </style>
+    <style name="AppSearchView" parent="Widget.AppCompat.SearchView" >
+        <!-- Text Size -->
 
+        <!-- Query Text Color -->
+        <item name="android:textColorPrimary">#fff</item>
+        <!-- Hint Color -->
+        <item name="android:textColorHint">#fff</item>
+        <!-- Icon Color -->
+        <item name="android:tint">#fff</item>
+    </style>
 </resources>

@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import com.example.jbconsbiosystem.RecyclerClasses.AttendanceDetailRecycler;
@@ -29,5 +30,9 @@ public class AttendenceDetail1 extends AppCompatActivity {
         id=i.getStringExtra("id");
         date=i.getStringExtra("date");
 
+    }
+
+    public void backPage(View view) {
+        finish();
     }
 }

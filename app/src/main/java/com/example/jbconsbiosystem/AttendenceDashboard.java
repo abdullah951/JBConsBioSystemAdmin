@@ -117,4 +117,7 @@ public class AttendenceDashboard extends AppCompatActivity  {
     }
 
 
+    public void backPage(View view) {
+        finish();
+    }
 }
