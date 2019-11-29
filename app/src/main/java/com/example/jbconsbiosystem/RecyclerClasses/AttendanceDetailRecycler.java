@@ -48,6 +48,7 @@ public class AttendanceDetailRecycler extends RecyclerView.Adapter<AttendanceDet
                 Intent intent=new Intent(context, AttendenceDetail1.class);
                 intent.putExtra("id", modelClass.getEmp_code());
                 intent.putExtra("date", modelClass.getDate());
+                intent.putExtra("name",modelClass.getName());
                 context.startActivity(intent);
 
             }

@@ -33,8 +33,8 @@ public class AttendanceDetail extends Activity {
     private RecyclerView recyclerView;
     private AttendanceDetailRecycler adaptor;
     private List<EmployeeModel> modelClassList;
-    private String id;
-    private TextView date_from, date_to;
+    private String id,name;
+    private TextView date_from, date_to,name_title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +43,7 @@ public class AttendanceDetail extends Activity {
 
         date_from = findViewById(R.id.date_from);
         date_to = findViewById(R.id.date_to);
+        name_title=findViewById(R.id.name_title);
 
         Date c = Calendar.getInstance().getTime();
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
@@ -66,6 +67,8 @@ public class AttendanceDetail extends Activity {
 
         Intent i=getIntent();
          id=i.getStringExtra("id");
+         name=i.getStringExtra("name");
+         name_title.setText(name);
         Toast.makeText(this, "yes loading "+id, Toast.LENGTH_SHORT).show();
 
         modelClassList = new ArrayList<>();
@@ -97,13 +100,15 @@ public class AttendanceDetail extends Activity {
                     jsonArray=jsonObject.getJSONArray("result");
                     for(int i=0;i<jsonArray.length();i++){
                         JSONObject data=jsonArray.getJSONObject(i);
+
                         String date=data.getString("date");
                         String hrs=data.getString("time_hours");
+
                         Log.e("TAG", "OnSuccess: " + date);
                         Log.e("TAG", "OnSuccess: " + hrs);
 
 
-                        modelClassList.add(new EmployeeModel(date,hrs));
+                        modelClassList.add(new EmployeeModel(date,hrs,name));
 
 
                     }

@@ -19,7 +19,7 @@ public class AttendenceDetail1 extends AppCompatActivity {
     private AttendanceDetailRecycler adaptor;
     private List<EmployeeModel> modelClassList;
 
-    private String id, date;
+    private String id, date,names;
     private TextView name, totalhours;
 
     @Override
@@ -29,6 +29,8 @@ public class AttendenceDetail1 extends AppCompatActivity {
         Intent i=getIntent();
         id=i.getStringExtra("id");
         date=i.getStringExtra("date");
+        names=i.getStringExtra("name");
+        name=findViewById(R.id.name_title2);
 
     }
 
