@@ -80,8 +80,9 @@ public class EmployeeRecycler extends RecyclerView.Adapter<EmployeeRecycler.View
                     for (EmployeeModel row : modelClassList) {
 
                         // name match condition. this might differ depending on your requirement
+                        // ab ye id bhe search karega run karke check karle or charging pe laga tera laptop band hone wala hai
                         // here we are looking for name or phone number match
-                        if (row.getName().toLowerCase().contains(charString.toLowerCase())) {
+                        if (row.getName().toLowerCase().contains(charString.toLowerCase()) || row.getEmp_code().toLowerCase().contains(charString.toLowerCase())) {
                             filteredList.add(row);
                             Log.e("yesder", "performFiltering: row is "+row.getName() );
                         }
