@@ -52,7 +52,7 @@
         android:id="@+id/searchclass"
         android:background="@drawable/searchclassbox"
         android:layout_marginBottom="5dp"
-        style="@style/AppSearchView"
+        style="@style/SearchAutoCompleteTextView"
         android:cursorVisible="true"
         android:textColor="@color/white"
         >
