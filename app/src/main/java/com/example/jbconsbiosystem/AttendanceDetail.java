@@ -32,6 +32,7 @@ import java.util.List;
 
 public class AttendanceDetail extends Activity {
     private RecyclerView recyclerView;
+    private String TAG = "AttendanceDetail";
     private AttendanceDetailRecycler adaptor;
     private List<EmployeeModel> modelClassList;
     private String id,name;
@@ -67,9 +68,10 @@ public class AttendanceDetail extends Activity {
         });
 
         Intent i=getIntent();
-         id=i.getStringExtra("id");
-         name=i.getStringExtra("name");
-         name_title.setText(name);
+        id=i.getStringExtra("id");
+        name=i.getStringExtra("name");
+        Log.e(TAG, "name: "+ name);
+        name_title.setText(name);
         Toast.makeText(this, "yes loading "+id, Toast.LENGTH_SHORT).show();
 
         modelClassList = new ArrayList<>();
@@ -95,21 +97,25 @@ public class AttendanceDetail extends Activity {
         VolleyRequest.PostRequest(AttendanceDetail.this, url,jsonObject, new VolleyPostCallBack() {
             @Override
             public void OnSuccess(JSONObject jsonObject) {
-                Log.e("yes", "OnSuccess: " );
-                JSONArray jsonArray=new JSONArray();
+                JSONArray jsonArray;
                 try {
                     jsonArray=jsonObject.getJSONArray("result");
                     for(int i=0;i<jsonArray.length();i++){
                         JSONObject data=jsonArray.getJSONObject(i);
 
+                        Log.e(TAG, "JSON object " + data.toString());
+
                         String date=data.getString("date");
                         String hrs=data.getString("time_hours");
 
+                        String checkin=data.getString("session_in");
+                        String checkout=data.getString("session_out");
+
                         Log.e("TAG", "OnSuccess: " + date);
                         Log.e("TAG", "OnSuccess: " + hrs);
+                        Log.e("TAG", "OnSuccess: " + name);
 
-
-                        modelClassList.add(new EmployeeModel(date,hrs,name));
+                        modelClassList.add(new EmployeeModel(date,hrs,name, checkin, checkout));
 
 
                     }

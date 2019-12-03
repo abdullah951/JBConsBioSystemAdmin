@@ -3,6 +3,7 @@ package com.example.jbconsbiosystem.RecyclerClasses;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,6 +50,9 @@ public class AttendanceDetailRecycler extends RecyclerView.Adapter<AttendanceDet
                 intent.putExtra("id", modelClass.getEmp_code());
                 intent.putExtra("date", modelClass.getDate());
                 intent.putExtra("name",modelClass.getName());
+                Log.e("Recyclerview TAG", "onClick: "+modelClass.getEmp_code());
+                Log.e("Recyclerview TAG", "onClick: "+modelClass.getName());
+                Log.e("Recyclerview TAG", "onClick: "+modelClass.getDate());
                 context.startActivity(intent);
 
             }

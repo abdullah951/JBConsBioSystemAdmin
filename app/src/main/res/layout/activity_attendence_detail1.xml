@@ -139,7 +139,7 @@
                     android:id="@+id/totalhours"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="05 hrs"
+                    android:text="00 hrs"
                     android:textColor="@color/white"
                     android:textStyle="bold"
                     android:layout_gravity="center"

@@ -54,6 +54,7 @@ public class EmployeeRecycler extends RecyclerView.Adapter<EmployeeRecycler.View
             public void onClick(View v) {
                 Intent intent=new Intent(context, AttendanceDetail.class);
                 intent.putExtra("id", modelClass.getEmp_code());
+                intent.putExtra("name", modelClass.getName());
                 context.startActivity(intent);
 
             }
