@@ -115,7 +115,7 @@ public class AttendanceDetail extends Activity {
                         Log.e("TAG", "OnSuccess: " + hrs);
                         Log.e("TAG", "OnSuccess: " + name);
 
-                        modelClassList.add(new EmployeeModel(date,hrs,name, checkin, checkout));
+                        modelClassList.add(new EmployeeModel(date,hrs,name, checkin, checkout,id));
 
 
                     }

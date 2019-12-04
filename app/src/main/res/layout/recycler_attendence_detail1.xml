@@ -35,7 +35,7 @@
         android:id="@+id/total_hours"
         android:textStyle="bold"
         android:layout_weight="1"
-        android:gravity="center"/>
+        android:gravity="end"/>
 
 
 </LinearLayout>

@@ -63,12 +63,19 @@ public class EmployeeModel {
         this.hours = totalhours;
     }
 
-    public EmployeeModel (String date, String hours, String name, String checkin, String checkout){
+    public EmployeeModel (String date, String hours, String name, String checkin, String checkout ,String id){
         this.checkin = checkin;
         this.checkout = checkout;
-        this.hours = hours;
+        this.hrs = hours;
         this.name = name;
         this.date = date;
+        this.emp_code=id;
+    }
+    public EmployeeModel (String checkin, String checkout ,String hrs){
+        this.checkin = checkin;
+        this.checkout = checkout;
+
+        this.hrs=hrs;
     }
 
     public EmployeeModel(String date, String hrs) {

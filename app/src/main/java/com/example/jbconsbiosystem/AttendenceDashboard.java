@@ -94,8 +94,10 @@ public class AttendenceDashboard extends AppCompatActivity  {
                         JSONObject data=jsonArray.getJSONObject(i);
                         String id=data.getString("matricule_personnel");
                         String name=data.getString("nom_personnel");
+                        String sname=data.getString("prenom_personnel");
+                        String n=name+" " +sname;
 
-                        modelClassList.add(new EmployeeModel(name," ","Employee",id));
+                        modelClassList.add(new EmployeeModel(n," ","Employee",id));
 
 
                     }

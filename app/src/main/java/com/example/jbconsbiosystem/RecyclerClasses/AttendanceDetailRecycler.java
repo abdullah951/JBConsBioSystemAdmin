@@ -41,7 +41,7 @@ public class AttendanceDetailRecycler extends RecyclerView.Adapter<AttendanceDet
 
         final EmployeeModel modelClass = modelClassList.get(i);
         viewHolder.date.setText(modelClass.getDate());
-        viewHolder.hrs.setText(modelClass.getHrs()+"hrs ");
+        viewHolder.hrs.setText(modelClass.getHrs()+" ");
 
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,6 +50,8 @@ public class AttendanceDetailRecycler extends RecyclerView.Adapter<AttendanceDet
                 intent.putExtra("id", modelClass.getEmp_code());
                 intent.putExtra("date", modelClass.getDate());
                 intent.putExtra("name",modelClass.getName());
+                intent.putExtra("time",modelClass.getHrs());
+
                 Log.e("Recyclerview TAG", "onClick: "+modelClass.getEmp_code());
                 Log.e("Recyclerview TAG", "onClick: "+modelClass.getName());
                 Log.e("Recyclerview TAG", "onClick: "+modelClass.getDate());

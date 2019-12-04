@@ -2,6 +2,7 @@ package com.example.jbconsbiosystem.RecyclerClasses;
 
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.jbconsbiosystem.R;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class AttendenceDetail1Recyler extends RecyclerView.Adapter<AttendenceDetail1Recyler.ViewHolder> {
@@ -39,7 +43,30 @@ public class AttendenceDetail1Recyler extends RecyclerView.Adapter<AttendenceDet
         final EmployeeModel modelClass = modelClassList.get(i);
         viewHolder.checkin.setText(modelClass.getCheckin());
         viewHolder.checkout.setText(modelClass.getCheckout());
-        viewHolder.hours.setText(modelClass.getTotalhours());
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm");
+        Date startDate = null;
+        try {
+            startDate = simpleDateFormat.parse(modelClass.getCheckin());
+            Date endDate = simpleDateFormat.parse(modelClass.getCheckout());
+            long difference = endDate.getTime() - startDate.getTime();
+            if(difference<0)
+            {
+                Date dateMax = simpleDateFormat.parse("24:00");
+                Date dateMin = simpleDateFormat.parse("00:00");
+                difference=(dateMax.getTime() -startDate.getTime() )+(endDate.getTime()-dateMin.getTime());
+            }
+            int days = (int) (difference / (1000*60*60*24));
+            int hours = (int) ((difference - (1000*60*60*24*days)) / (1000*60*60));
+            int min = (int) (difference - (1000*60*60*24*days) - (1000*60*60*hours)) / (1000*60);
+            Log.i("log_tag","Hours: "+hours+", Mins: "+min);
+            viewHolder.hours.setText(hours+"H "+min+"M");
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+
+
+
 
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
