@@ -24,11 +24,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
 public class AttendanceDetail extends Activity {
     private RecyclerView recyclerView;
@@ -36,7 +38,9 @@ public class AttendanceDetail extends Activity {
     private AttendanceDetailRecycler adaptor;
     private List<EmployeeModel> modelClassList;
     private String id,name;
-    private TextView date_from, date_to,name_title;
+    private Long total_hrs;
+    private TextView date_from, date_to,name_title, txtId,total_time;
+    private SimpleDateFormat timeFormat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,9 +50,12 @@ public class AttendanceDetail extends Activity {
         date_from = findViewById(R.id.date_from);
         date_to = findViewById(R.id.date_to);
         name_title=findViewById(R.id.name_title);
+        txtId=findViewById(R.id.id);
+        total_time=findViewById(R.id.total_time);
 
         Date c = Calendar.getInstance().getTime();
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+         timeFormat= new SimpleDateFormat("HH:mm:ss");
         String formattedDate = df.format(c);
         date_to.setText(formattedDate);
         date_from.setText(formattedDate);
@@ -69,6 +76,9 @@ public class AttendanceDetail extends Activity {
 
         Intent i=getIntent();
         id=i.getStringExtra("id");
+
+        txtId.setText(id);
+
         name=i.getStringExtra("name");
         Log.e(TAG, "name: "+ name);
         name_title.setText(name);
@@ -83,6 +93,7 @@ public class AttendanceDetail extends Activity {
         AddDataToRecyclerView(date_to.getText().toString(), date_from.getText().toString());
     }
     private void AddDataToRecyclerView(String to, String from) {
+
         String url= Urls.attendanceDetail;
         JSONObject jsonObject=new JSONObject();
         try {
@@ -97,7 +108,10 @@ public class AttendanceDetail extends Activity {
         VolleyRequest.PostRequest(AttendanceDetail.this, url,jsonObject, new VolleyPostCallBack() {
             @Override
             public void OnSuccess(JSONObject jsonObject) {
+                modelClassList.clear();
                 JSONArray jsonArray;
+                total_hrs=0L;
+
                 try {
                     jsonArray=jsonObject.getJSONArray("result");
                     for(int i=0;i<jsonArray.length();i++){
@@ -115,10 +129,36 @@ public class AttendanceDetail extends Activity {
                         Log.e("TAG", "OnSuccess: " + hrs);
                         Log.e("TAG", "OnSuccess: " + name);
 
+
+
+                        timeFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
+
+                        Date date1 = null;
+                        try {
+                            date1 = timeFormat.parse(hrs);
+                            total_hrs=total_hrs+date1.getTime();
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+
+
+
+
+
+
+
                         modelClassList.add(new EmployeeModel(date,hrs,name, checkin, checkout,id));
 
 
                     }
+                    if(jsonArray.length()>0) {
+                        String date3 = timeFormat.format(new Date(total_hrs));
+                        total_time.setText(date3);
+                        Log.e("TAG","The sum is "+date3);
+                    }
+
+
+
                     Log.e("TAG", modelClassList.toString());
                     adaptor=new AttendanceDetailRecycler(AttendanceDetail.this,modelClassList);
 
@@ -154,6 +194,7 @@ public class AttendanceDetail extends Activity {
                                 ((TextView) v).setText(selectedDate);
                                 break;
                         }
+
                         AddDataToRecyclerView(date_to.getText().toString(), date_from.getText().toString());
                     }
                 }, cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH));

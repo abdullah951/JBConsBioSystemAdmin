@@ -90,6 +90,7 @@ public class AttendenceDetail1 extends AppCompatActivity {
                         String checkin=data.getString("session_in");
                         String checkout=data.getString("session_out");
                         String hrs=data.getString("time_hours");
+                        Log.e(TAG, "OnSuccess: hours  "+hrs );
 
 
 

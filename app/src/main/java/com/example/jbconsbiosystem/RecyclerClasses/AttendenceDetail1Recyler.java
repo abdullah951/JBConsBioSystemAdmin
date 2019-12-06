@@ -43,26 +43,28 @@ public class AttendenceDetail1Recyler extends RecyclerView.Adapter<AttendenceDet
         final EmployeeModel modelClass = modelClassList.get(i);
         viewHolder.checkin.setText(modelClass.getCheckin());
         viewHolder.checkout.setText(modelClass.getCheckout());
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm");
-        Date startDate = null;
-        try {
-            startDate = simpleDateFormat.parse(modelClass.getCheckin());
-            Date endDate = simpleDateFormat.parse(modelClass.getCheckout());
-            long difference = endDate.getTime() - startDate.getTime();
-            if(difference<0)
-            {
-                Date dateMax = simpleDateFormat.parse("24:00");
-                Date dateMin = simpleDateFormat.parse("00:00");
-                difference=(dateMax.getTime() -startDate.getTime() )+(endDate.getTime()-dateMin.getTime());
-            }
-            int days = (int) (difference / (1000*60*60*24));
-            int hours = (int) ((difference - (1000*60*60*24*days)) / (1000*60*60));
-            int min = (int) (difference - (1000*60*60*24*days) - (1000*60*60*hours)) / (1000*60);
-            Log.i("log_tag","Hours: "+hours+", Mins: "+min);
-            viewHolder.hours.setText(hours+"H "+min+"M");
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+
+        viewHolder.hours.setText(modelClass.getHrs());
+//        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm");
+//        Date startDate = null;
+//        try {
+//            startDate = simpleDateFormat.parse(modelClass.getCheckin());
+//            Date endDate = simpleDateFormat.parse(modelClass.getCheckout());
+//            long difference = endDate.getTime() - startDate.getTime();
+//            if(difference<0)
+//            {
+//                Date dateMax = simpleDateFormat.parse("24:00");
+//                Date dateMin = simpleDateFormat.parse("00:00");
+//                difference=(dateMax.getTime() -startDate.getTime() )+(endDate.getTime()-dateMin.getTime());
+//            }
+//            int days = (int) (difference / (1000*60*60*24));
+//            int hours = (int) ((difference - (1000*60*60*24*days)) / (1000*60*60));
+//            int min = (int) (difference - (1000*60*60*24*days) - (1000*60*60*hours)) / (1000*60);
+//            Log.i("log_tag","Hours: "+hours+", Mins: "+min);
+//            viewHolder.hours.setText(hours+"H "+min+"M");
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
 
 
 

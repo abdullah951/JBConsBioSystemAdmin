@@ -49,13 +49,25 @@
             android:textSize="26sp"
             android:textStyle="bold"
             android:id="@+id/name"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="9001"
+            android:id="@+id/id"
+            android:layout_margin="20dp"
+            android:textColor="@color/white"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
+            android:textSize="20dp"
+            android:layout_below="@+id/name"/>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_below="@id/name"
+            android:layout_below="@id/id"
             android:layout_marginStart="10dp"
             android:id="@+id/linear_search"
             android:layout_marginEnd="10dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="20dp"
 
             android:layout_height="wrap_content">
             <RelativeLayout
@@ -150,8 +162,43 @@
         android:id="@+id/recycler_user_attendance"
         android:layout_below="@id/relative_top"
         android:layout_marginTop="10dp"
-        tools:itemCount="5"
+        android:layout_marginBottom="20dp"
+        tools:itemCount="2"
         tools:listitem="@layout/recycler_attendance_detail"
         android:layout_height="wrap_content"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:orientation="horizontal"
+        android:layout_margin="10dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:background="@drawable/rounded_row"
+        android:layout_below="@id/recycler_user_attendance">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total Time"
+            android:textSize="20dp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:layout_weight="1"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:id="@+id/total_time"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00 hrs"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="end"/>
+
+    </LinearLayout>
+
 
 </RelativeLayout>
